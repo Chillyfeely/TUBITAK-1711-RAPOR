@@ -81,7 +81,7 @@
 - Ancak bu avantajların getirdiği esneklik aynı zamanda çalışan bir modelin geliştirilmesini de zorlayıcı kılmaktadır.
 - Şuanki modelin geliştirilmek için daha fazla veriye ihtiyacı vardır.
 
-## 3.3 - Genelleştirilmiş Ekstrem Türetilmiş Sapma (Generalized Extreme Studentized Deviate)
+### 3.3 - Genelleştirilmiş Ekstrem Türetilmiş Sapma (Generalized Extreme Studentized Deviate)
 
 - Standart dağılıma (Gaussian Distrubution) sahip veriler üzerinde anomali tespiti için kullanılan Grubb testi yanlızca 1 veya 0 anomali için kullanılabiliyor.
 - Genelleştirilmiş Ekstrem Türetilmiş Sapma kısaca GESD, Grubb testinin özyinelemeli(recursive) bir şekilde çalıştırılması sonucu anomali tespitinde kullanılır. Bu sayede Grubb testi birden fazla anomaliyi tespit etmek için kullanılabilir.
@@ -99,7 +99,6 @@
   <em>Şekil 3.5: Verinin normal dağılıma sahip olduğunu gösteren grafikler</em>
 </p>
 
-<div style="margin-top: 80px;"></div>
 ## Referans
 
 - [1] [Developments in Water Science, Volume 45, 1994, Pages 463-482.](https://www.sciencedirect.com/science/article/abs/pii/S0167564808706749)
