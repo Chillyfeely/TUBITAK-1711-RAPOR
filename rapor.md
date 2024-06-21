@@ -11,8 +11,6 @@
 - tensorflow: Derin öğrenme ve sinir ağlarını inşa etmek için kullanıldı
 - sklearn: Makine öğrenimi modellerini eğitmek, test etmek ve uygulamak için kullanıldı, geniş bir algoritma kütüphanesi sunar
 
-<div style="margin-top: 80px;"></div>
-
 ## 2 - VERİ HAZIRLIĞI
 
 - Otellerin sağlamış olduğu kullanım verilerinin incelenmesi sonucu X oteli seçildi ve modellerin keşfi için X otelinin 2019, 2022 ve 2023 yılları için günlük harcanan toplam elektrik değerlerinin kullanılmasına karar verildi.
@@ -54,8 +52,6 @@
   <em>Şekil 3.1: Sezonsallıktan ayrılmış birleşim veri çerçevesinin, z skoru 3σ'dan büyük noktaları</em>
 </p>
 
-<div style="margin-top: 80px;"></div>
-
 ### 3.2 - Otokodlayıcı ile Anomali Tespiti
 
 - Otokodlayıcı, denetimsiz bir şekilde öğrenebilen bir tür yapay sinir ağıdır.
@@ -65,8 +61,6 @@
   <br>
   <em>Şekil 3.2: Basitleştirilmiş bir otokodlayıcı mimarisi</em>
 </p>
-
-<div style="margin-top: 80px;"></div>
 
 #### 3.2.1 - Varyasyonel Otokodlayıcı ile Anomali Tespiti
 
@@ -79,8 +73,6 @@
   <em>Her bireysel noktanın deşifre işlemi sırasındaki yeniden oluşturulma hatasının grafiği</em>
 </p>
 
-<div style="margin-top: 80px;"></div>
-
 ### 3.2.2 - Uzun Kısa Süreli Bellek(LSTM) Otokodlayıcı
 
 - Başka bir otokodlayıcı türü olan LSTM otokodlayıcı uzun süreli hafızaya sahip olması ve veri kirliliğine karşı olan direnci sayesinde zaman serileri üzerinde tahmin ve anomali tespiti yapmak için son derece uygundur.
@@ -88,8 +80,6 @@
 - Ayrıca, modelin veri kirliliğine ve gürültüye karşı gösterdiği direnç, gerçek dünya verileri üzerinde çalışırken büyük bir avantaj sağlar.
 - Ancak bu avantajların getirdiği esneklik aynı zamanda çalışan bir modelin geliştirilmesini de zorlayıcı kılmaktadır.
 - Şuanki modelin geliştirilmek için daha fazla veriye ihtiyacı vardır.
-
-<div style="margin-top: 80px;"></div>
 
 ## 3.3 - Genelleştirilmiş Ekstrem Türetilmiş Sapma (Generalized Extreme Studentized Deviate)
 
