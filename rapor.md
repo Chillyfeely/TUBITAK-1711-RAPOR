@@ -73,7 +73,7 @@
   <em>Her bireysel noktanın deşifre işlemi sırasındaki yeniden oluşturulma hatasının grafiği</em>
 </p>
 
-### 3.2.2 - Uzun Kısa Süreli Bellek(LSTM) Otokodlayıcı
+#### 3.2.2 - Uzun Kısa Süreli Bellek(LSTM) Otokodlayıcı
 
 - Başka bir otokodlayıcı türü olan LSTM otokodlayıcı uzun süreli hafızaya sahip olması ve veri kirliliğine karşı olan direnci sayesinde zaman serileri üzerinde tahmin ve anomali tespiti yapmak için son derece uygundur.
 - LSTM otokodlayıcılar, verilerdeki uzun vadeli bağlantıları ve döngüsel özellikleri yakalayabilme yetenekleri sayesinde, zaman serilerinin gelecekteki değerlerini tahmin etmede veya veri setindeki anomalileri belirlemede yüksek doğruluk sağlar.
