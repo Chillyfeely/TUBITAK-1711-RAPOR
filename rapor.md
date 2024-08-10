@@ -11,6 +11,8 @@
 - tensorflow: Derin öğrenme ve sinir ağlarını inşa etmek için kullanıldı
 - sklearn: Makine öğrenimi modellerini eğitmek, test etmek ve uygulamak için kullanıldı, geniş bir algoritma kütüphanesi sunar
 
+<div style="margin-top: 80px;"></div>
+
 ## 2 - VERİ HAZIRLIĞI
 
 - Otellerin sağlamış olduğu kullanım verilerinin incelenmesi sonucu X oteli seçildi ve modellerin keşfi için X otelinin 2019, 2022 ve 2023 yılları için günlük harcanan toplam elektrik değerlerinin kullanılmasına karar verildi.
@@ -52,6 +54,8 @@
   <em>Şekil 3.1: Sezonsallıktan ayrılmış birleşim veri çerçevesinin, z skoru 3σ'dan büyük noktaları</em>
 </p>
 
+<div style="margin-top: 80px;"></div>
+
 ### 3.2 - Otokodlayıcı ile Anomali Tespiti
 
 - Otokodlayıcı, denetimsiz bir şekilde öğrenebilen bir tür yapay sinir ağıdır.
@@ -61,6 +65,8 @@
   <br>
   <em>Şekil 3.2: Basitleştirilmiş bir otokodlayıcı mimarisi</em>
 </p>
+
+<div style="margin-top: 80px;"></div>
 
 #### 3.2.1 - Varyasyonel Otokodlayıcı ile Anomali Tespiti
 
@@ -73,15 +79,18 @@
   <em>Her bireysel noktanın deşifre işlemi sırasındaki yeniden oluşturulma hatasının grafiği</em>
 </p>
 
-#### 3.2.2 - Uzun Kısa Süreli Bellek(LSTM) Otokodlayıcı
+<div style="margin-top: 80px;"></div>
+
+### 3.2.2 - Uzun Kısa Süreli Bellek(LSTM) Otokodlayıcı
 
 - Başka bir otokodlayıcı türü olan LSTM otokodlayıcı uzun süreli hafızaya sahip olması ve veri kirliliğine karşı olan direnci sayesinde zaman serileri üzerinde tahmin ve anomali tespiti yapmak için son derece uygundur.
 - LSTM otokodlayıcılar, verilerdeki uzun vadeli bağlantıları ve döngüsel özellikleri yakalayabilme yetenekleri sayesinde, zaman serilerinin gelecekteki değerlerini tahmin etmede veya veri setindeki anomalileri belirlemede yüksek doğruluk sağlar.
 - Ayrıca, modelin veri kirliliğine ve gürültüye karşı gösterdiği direnç, gerçek dünya verileri üzerinde çalışırken büyük bir avantaj sağlar.
 - Ancak bu avantajların getirdiği esneklik aynı zamanda çalışan bir modelin geliştirilmesini de zorlayıcı kılmaktadır.
-- Model eğitim aşamasındadır.
 
-### 3.3 - Genelleştirilmiş Ekstrem Türetilmiş Sapma (Generalized Extreme Studentized Deviate)
+<div style="margin-top: 80px;"></div>
+
+## 3.3 - Genelleştirilmiş Ekstrem Türetilmiş Sapma (Generalized Extreme Studentized Deviate)
 
 - Standart dağılıma (Gaussian Distrubution) sahip veriler üzerinde anomali tespiti için kullanılan Grubb testi yanlızca 1 veya 0 anomali için kullanılabiliyor.
 - Genelleştirilmiş Ekstrem Türetilmiş Sapma kısaca GESD, Grubb testinin özyinelemeli(recursive) bir şekilde çalıştırılması sonucu anomali tespitinde kullanılır. Bu sayede Grubb testi birden fazla anomaliyi tespit etmek için kullanılabilir.
@@ -98,6 +107,60 @@
   <br>
   <em>Şekil 3.5: Verinin normal dağılıma sahip olduğunu gösteren grafikler</em>
 </p>
+
+## 4 - GÖZETİMLİ VE GÖZETİMSİZ ÖĞRENME
+
+- Makine öğrenme algoritmaları gözetimli ve gözetimsiz öğrenme olarak iki gruba ayrılır.
+- Gözetimsiz öğrenme, veri hakkında alan bilgisine sahibi olunmayan ve verinin temizlik derecesinin belirsiz olduğu durumlarda kullanıma en uygunken gözetimli öğrenme ise bu durumum aksi durumlarda en iyi performansı gösterir.
+- Proje ekibinin veri üzerinde sahip olduğu alan bilgisinin yeterli olması ancak verilerin temizlik derecesi hakkında bilgimizin kısıtlı olması sebebiyle bu iki yöntemin de aynı anda kullanılmasına karar verilmiştir.
+
+### 4.1 - Model Yapısı
+
+- Projedeki model, otel verilerini öncelikle gözetimsiz bir model veya istatistiksel yöntemlerle temizleyecek, ardından kalan verilerle bir LSTM modeli eğitecektir (Şekil 4.1). Gözetimsiz öğrenme modülü için denenen dört yöntemden (üçü yapay zeka, biri istatistiksel olan GESD Testi) en iyi sonuç, kullanılan veri yapısının normal dağılıma sahip olması nedeniyle GESD Testi'nden alınmıştır (Şekil 4.2). Destek Vektör Makineleri (SVM) ile elde edilen sonuçlar da büyük ölçüde GESD Testi ile örtüşmektedir (Şekil 4.3).
+
+- Bu gözlemler sonucunda, girilen verinin normal dağılıma sahip olması durumunda GESD Testi kullanılacak, diğer durumlarda ise Destek Vektör Makineleri ile anomali tespiti yapılacaktır. Gürültü ve anomalilerden arındırılan veri ile eğitilen LSTM modeli, daha önce görülmemiş veriler üzerinde tahmin yapmak ve anomali tahminlerini filtrelemek için kullanılacaktır.
+
+- Modelin tahminleri, Şekil 4.4 ve 4.5'te görülebilmekle beraber mevcut verileri en verimli şekilde modele beslemek için çalışmalar sürdürülmektedir.
+
+<p align="center">
+  <img src="images/model_diagram.png" alt="4.1">
+  <br>
+  <em>Şekil 4.1: Örnek Model Yapısı</em>
+</p>
+
+<div style="margin-top: 80px;"></div>
+
+<p align="center">
+  <img src="images/gesd_sonucu.png" alt="4.2">
+  <br>
+  <em>Şekil 4.2: GESD ile anomali tespiti</em>
+</p>
+
+<div style="margin-top: 80px;"></div>
+
+<p align="center">
+  <img src="images/svm_sonucu.png" alt="4.3">
+  <br>
+  <em>Şekil 4.3: SVM ile anomali tespiti</em>
+</p>
+
+<div style="margin-top: 80px;"></div>
+
+<p align="center">
+  <img src="images/gercek.png" alt="4.4">
+  <br>
+  <em>Şekil 4.4: Gerçek veri</em>
+</p>
+
+<div style="margin-top: 80px;"></div>
+
+<p align="center">
+  <img src="images/tahmin_12025.png" alt="4.5">
+  <br>
+  <em>Şekil 4.5: Model tahmini</em>
+</p>
+
+<div style="margin-top: 80px;"></div>
 
 ## Referans
 
